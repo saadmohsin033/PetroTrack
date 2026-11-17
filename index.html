@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PetroTrack Stock Manager</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="logo"><div class="logo-mark">PT</div><div><b>PetroTrack</b><span>Stock &amp; sales manager</span></div></div>
+    <nav class="nav" id="nav" aria-label="Main"></nav>
+    <div class="side-foot">Demo data is generated in the browser and resets on reload.</div>
+  </aside>
+  <div class="main">
+    <header class="top"><div><h1 id="ttl"></h1><p id="sub"></p></div><div class="chip" id="clock"></div></header>
+    <main id="view"></main>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+<!-- Load order matters: data structures first, then core, then pages, router last -->
+<script src="js/datastructures.js"></script>
+<script src="js/core.js"></script>
+<script src="js/pages-dashboard-sales-inventory.js"></script>
+<script src="js/pages-analysis-reports-customers.js"></script>
+<script src="js/pages-structures-router.js"></script>
+</body>
+</html>

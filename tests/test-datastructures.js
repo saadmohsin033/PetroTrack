@@ -1,0 +1,13 @@
+const { HashMap, AVLTree, MinHeap, CircularQueue, Trie, DLL, Graph, mergeSort, lowerBound } = require('../js/datastructures.js');
+const assert = require('assert');
+const h = new HashMap(); for (let i = 0; i < 500; i++) h.set('k' + i, i); assert(h.get('k321') === 321 && h.size === 500 && h.rehashes > 3); h.delete('k5'); assert(!h.has('k5'));
+const t = new AVLTree(); for (let i = 1; i <= 1023; i++) t.insert(i, i); assert(t.height() <= 11 && t.size === 1023);
+assert(t.range(10, 15).join() === '10,11,12,13,14,15'); t.remove(500); assert(t.find(500) === undefined && t.size === 1022);
+const inord = t.inorder(); assert(inord.every((v, i) => !i || inord[i - 1] < v));
+const m = new MinHeap(); [5, 3, 9, 1, 7].forEach(p => m.push({ p })); assert([1, 3, 5, 7, 9].every(x => m.pop().p === x));
+const q = new CircularQueue(3); q.enqueue(1); q.enqueue(2); q.enqueue(3); assert(!q.enqueue(4)); q.dequeue(); q.enqueue(4); assert(q.toArray().join() === '2,3,4');
+const tr = new Trie(); tr.insert('MH12AB1234', 'a'); tr.insert('MH12CD9999', 'b'); assert(tr.search('mh12a').length === 1 && tr.search('mh12').length === 2);
+const d = new DLL(3); [1, 2, 3, 4].forEach(x => d.addFront(x)); assert(d.toArray().join() === '4,3,2');
+const g = new Graph(); g.edge('S', 'A', 4); g.edge('S', 'B', 1); g.edge('B', 'A', 2); const r = g.dijkstra('S'); assert(r.dist.get('A') === 3 && g.path(r.prev, 'A').join() === 'S,B,A');
+assert(mergeSort([5, 2, 8, 1], (a, b) => a - b).join() === '1,2,5,8'); assert(lowerBound([1, 3, 5, 7], 5) === 2);
+console.log('all data-structure tests passed');
